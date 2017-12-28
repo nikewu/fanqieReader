@@ -1,2 +1,2 @@
 # fanqieReader
-reader小程序
+微信小程序 知乎热门reader
