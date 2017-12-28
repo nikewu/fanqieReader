@@ -1,0 +1,1 @@
+export const host = 'https://news-at.zhihu.com/api/4';

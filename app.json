@@ -1,0 +1,12 @@
+{
+    "pages": [
+      "views/index/index"
+    ],
+    "window": {
+      "navigationBarBackgroundColor": "#ffffff",
+      "navigationBarTextStyle": "black",
+      "navigationBarTitleText": "番茄阅读",
+      "backgroundColor": "#f7f7f7",
+      "backgroundTextStyle": "dark"
+    }
+  }

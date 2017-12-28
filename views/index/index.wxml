@@ -1,0 +1,50 @@
+<wxs src="./../../mixins/common.wxs" module="common" />
+<import src="./../../vendor/wxParse/wxParse.wxml" />
+<view>
+  <view wx:if="{{viewList == true}}">
+    <view class='logon__bg'>
+      <view class='logo__text'>番茄阅读</view>
+    </view>
+    <view class="content">
+      <view class="flex">
+        <view class='header'>今日热文</view>
+        <block wx:for="{{data}}" wx:for-item="news" wx:key="{{index}}">
+          <view class="flex__item" data-id="{{news.id}}" bindtap='viewDetail' :hover-class='none'>
+            <view class="article">
+              <image class="article__img" alt="img 01" src="{{news.images[0]}}"></image>
+              <view class="article__title">{{news.title}}</view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class='article__more' wx:if="more.length > 0">
+        <block wx:for="{{more}}" wx:key="{{index}}">
+          <view class='header'>{{item.date}}</view>
+          <block wx:for="{{item.stories}}" wx:key="{{index}}">
+            <view class="flex__item" data-id="{{item.id}}" bindtap='viewDetail' :hover-class='none'>
+              <view class="article">
+                <image class="article__img" alt="img 01" src="{{item.images[0]}}"></image>
+                <view class="article__title">{{item.title}}</view>
+              </view>
+            </view>
+          </block>
+        </block>
+      </view>
+    </view>
+  </view>
+  <scroll-view wx:else class='article__detail' scroll-into-view="{{toView}}"  scroll-y>
+    <view id="image" class='detail__img' style='background-image:url({{detail.image}})'>
+      <view class="detail__mask"></view>
+    </view>
+    <view class='detail__title' style="{{detail.title}}">{{detail.title}}</view>
+
+    <view class='article__box'>
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+    </view>
+    <view class='article__back'>
+      <view class="arrowBack" bindtap='backList'>⇠</view>
+      <view class="arrowTop" bindtap='backTop'>⇡</view>
+    </view>
+  </scroll-view>
+  <view wx:if="{{isRecFetching == true}}" class='article__loading'>正在加载...</view>
+</view>
